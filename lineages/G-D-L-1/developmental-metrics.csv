@@ -1,0 +1,2 @@
+timestamp,lineage_id,state_id,status,developed_nodes,developed_edges,substrate_areas,replay_verified,recovery_verified,notes
+2026-08-14,G-D-L-1,,PRE-BIRTH,,,,false,false,"namespace reserved; no birth claim"
