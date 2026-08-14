@@ -1,0 +1,12 @@
+{
+  "schema_version": "gdl-public-phylogeny-v1",
+  "lineages": [
+    {
+      "lineage_id": "G-D-L-1",
+      "generation": 0,
+      "status": "PRE-BIRTH",
+      "parent_lineages": []
+    }
+  ],
+  "ancestry_edges": []
+}
