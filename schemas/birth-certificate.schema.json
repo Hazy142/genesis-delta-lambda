@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GENESIS-Delta-Lambda Public Birth Certificate",
+  "type": "object",
+  "required": ["schema_version", "lineage_id", "generation", "parent_lineages", "status", "replay_verified", "recovery_verified"],
+  "properties": {
+    "schema_version": {"const": "gdl-public-birth-v1"},
+    "lineage_id": {"type": "string", "pattern": "^G-D-L-[1-9][0-9]*$"},
+    "generation": {"type": "integer", "minimum": 0},
+    "parent_lineages": {"type": "array", "items": {"type": "string", "pattern": "^G-D-L-[1-9][0-9]*$"}, "uniqueItems": true},
+    "status": {"enum": ["PRE-BIRTH", "BORN"]},
+    "birth_state_id": {"type": ["string", "null"]},
+    "canonical_state_root": {"type": ["string", "null"]},
+    "authority_event_root": {"type": ["string", "null"]},
+    "genome_public_commitment": {"type": ["string", "null"]},
+    "runtime_public_commitment": {"type": ["string", "null"]},
+    "substrate_public_summary": {"type": ["object", "null"]},
+    "replay_verified": {"type": "boolean"},
+    "recovery_verified": {"type": "boolean"},
+    "private_certificate_commitment": {"type": ["string", "null"]},
+    "public_export_commitment": {"type": ["string", "null"]},
+    "note": {"type": ["string", "null"]}
+  }
+}
