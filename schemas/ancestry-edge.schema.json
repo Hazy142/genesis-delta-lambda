@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GENESIS-Delta-Lambda Public Ancestry Edge",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "parent_lineage", "child_lineage", "birth_public_commitment"],
+  "properties": {
+    "schema_version": {"const": "gdl-public-ancestry-v1"},
+    "parent_lineage": {"type": "string", "pattern": "^G-D-L-[1-9][0-9]*$"},
+    "child_lineage": {"type": "string", "pattern": "^G-D-L-[1-9][0-9]*$"},
+    "birth_public_commitment": {"type": "string"},
+    "inheritance_class_summary": {"type": ["array", "null"], "items": {"type": "string"}},
+    "timestamp": {"type": ["string", "null"]}
+  }
+}
