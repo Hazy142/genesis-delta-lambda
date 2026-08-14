@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GENESIS-Delta-Lambda Sanitized Public Export",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "lineage_id", "status", "source_private_commitment", "public_export_commitment"],
+  "properties": {
+    "schema_version": {"const": "gdl-public-export-v1"},
+    "lineage_id": {"type": "string", "pattern": "^G-D-L-[1-9][0-9]*$"},
+    "generation": {"type": ["integer", "null"], "minimum": 0},
+    "status": {"type": "string"},
+    "state_id": {"type": ["string", "null"]},
+    "canonical_state_root": {"type": ["string", "null"]},
+    "authority_event_root": {"type": ["string", "null"]},
+    "developed_nodes": {"type": ["integer", "null"], "minimum": 0},
+    "developed_edges": {"type": ["integer", "null"], "minimum": 0},
+    "substrate_areas": {"type": ["integer", "null"], "minimum": 0},
+    "replay_verified": {"type": ["boolean", "null"]},
+    "recovery_verified": {"type": ["boolean", "null"]},
+    "source_private_commitment": {"type": "string"},
+    "public_export_commitment": {"type": "string"},
+    "claim_boundary": {"type": ["string", "null"]},
+    "timestamp": {"type": ["string", "null"]}
+  }
+}
