@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Hazy142/genesis-delta-lambda/schemas/public-lineage-record.schema.json",
+  "title": "GENESIS-Delta-Lambda Public Lineage Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "lineage_id", "status"],
+  "properties": {
+    "schema_version": {"const": "gdl-public-lineage-v1"},
+    "lineage_id": {"type": "string", "pattern": "^G-D-L-[1-9][0-9]*$"},
+    "generation": {"type": "integer", "minimum": 0},
+    "status": {"enum": ["PRE-BIRTH", "ACTIVE", "DORMANT", "TERMINATED", "UNKNOWN"]},
+    "state_id": {"type": ["string", "null"]},
+    "canonical_state_root": {"type": ["string", "null"], "pattern": "^sha256:[0-9a-f]{64}$"},
+    "authority_event_root": {"type": ["string", "null"], "pattern": "^sha256:[0-9a-f]{64}$"},
+    "developed_nodes": {"type": ["integer", "null"], "minimum": 0},
+    "developed_edges": {"type": ["integer", "null"], "minimum": 0},
+    "substrate_areas": {"type": ["integer", "null"], "minimum": 0},
+    "replay_verified": {"type": "boolean"},
+    "recovery_verified": {"type": "boolean"},
+    "public_export_commitment": {"type": ["string", "null"]},
+    "timestamp": {"type": ["string", "null"]},
+    "note": {"type": ["string", "null"]}
+  }
+}
