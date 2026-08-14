@@ -1,0 +1,47 @@
+name: public-boundary
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  public-boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject private or binary substrate material
+        shell: bash
+        run: |
+          set -euo pipefail
+          forbidden='\.(bin|ckpt|pt|pth|npz|npy|pickle|pkl|dump|core|cuda|vramsnap)$'
+          if git ls-files | grep -E "$forbidden"; then
+            echo 'Forbidden binary/private artifact type found in public repository.' >&2
+            exit 1
+          fi
+          if git ls-files | grep -E '(^|/)(snapshots|checkpoints|private|raw|corpus)(/|$)'; then
+            echo 'Forbidden private/raw directory found in public repository.' >&2
+            exit 1
+          fi
+      - name: Bound file size
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r f; do
+            bytes=$(wc -c < "$f")
+            if [ "$bytes" -gt 1048576 ]; then
+              echo "Public Git file exceeds 1 MiB: $f ($bytes bytes)" >&2
+              exit 1
+            fi
+          done < <(git ls-files)
+      - name: Parse JSON and JSONL evidence
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          for p in Path('.').rglob('*.json'):
+              json.loads(p.read_text(encoding='utf-8'))
+          for p in Path('.').rglob('*.jsonl'):
+              for n, line in enumerate(p.read_text(encoding='utf-8').splitlines(), 1):
+                  if line.strip():
+                      json.loads(line)
+          print('PUBLIC_BOUNDARY=PASS')
