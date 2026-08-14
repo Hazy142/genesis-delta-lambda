@@ -1,0 +1,20 @@
+# Never commit private/binary substrate state
+*.bin
+*.ckpt
+*.pt
+*.pth
+*.npz
+*.npy
+*.pickle
+*.pkl
+*.dump
+*.core
+*.cuda
+*.vramsnap
+snapshots/
+checkpoints/
+private/
+raw/
+corpus/
+.env
+.env.*
