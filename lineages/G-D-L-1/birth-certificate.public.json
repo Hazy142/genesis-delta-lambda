@@ -1,0 +1,18 @@
+{
+  "schema_version": "gdl-public-birth-v1",
+  "lineage_id": "G-D-L-1",
+  "generation": 0,
+  "parent_lineages": [],
+  "status": "PRE-BIRTH",
+  "birth_state_id": null,
+  "canonical_state_root": null,
+  "authority_event_root": null,
+  "genome_public_commitment": null,
+  "runtime_public_commitment": null,
+  "substrate_public_summary": null,
+  "replay_verified": false,
+  "recovery_verified": false,
+  "private_certificate_commitment": null,
+  "public_export_commitment": null,
+  "note": "Reserved founder lineage. Repository creation is not a birth event."
+}
